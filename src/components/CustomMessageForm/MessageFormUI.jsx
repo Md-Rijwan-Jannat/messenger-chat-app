@@ -1,18 +1,19 @@
-import { useState } from 'react'
 import { HiXMark } from 'react-icons/hi2';
-import { BsFillDropletFill } from 'react-icons/bs';
-import { FaPaperPlane, FaPaperclip } from 'react-icons/fa';
+import { GoPaperAirplane } from 'react-icons/go';
+import { FaPaperclip } from 'react-icons/fa';
+import { useState } from "react";
+import Dropzone from "react-dropzone";
 
-function MessageFormUI({
+const MessageFormUI = ({
     setAttachment,
     message,
     handleChange,
     handleSubmit,
     appendText,
     handleKeyDown,
-}) {
-
+}) => {
     const [preview, setPreview] = useState("");
+
     return (
         <div className="message-form-container">
             {preview && (
@@ -52,7 +53,7 @@ function MessageFormUI({
                     )}
                 </div>
                 <div className="message-form-icons">
-                    <BsFillDropletFill
+                    <Dropzone
                         acceptedFiles=".jpg,.jpeg,.png"
                         multiple={false}
                         noClick={true}
@@ -70,10 +71,10 @@ function MessageFormUI({
                                 />
                             </div>
                         )}
-                    </BsFillDropletFill>
+                    </Dropzone>
 
                     <hr className="vertical-line" />
-                    <FaPaperPlane
+                    <GoPaperAirplane
                         className="message-form-icon-airplane"
                         onClick={() => {
                             setPreview("");
@@ -83,7 +84,7 @@ function MessageFormUI({
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default MessageFormUI
+export default MessageFormUI;
